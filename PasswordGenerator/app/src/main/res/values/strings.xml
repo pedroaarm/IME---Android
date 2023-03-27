@@ -3,5 +3,6 @@
     <string name="minusculas">Letras Minusculas</string>
     <string name="maisucula">Letras Maiscula</string>
     <string name="especiais">Caracteres Especiais</string>
+    <string name="numeros">Numeros</string>
     <string name="gerarSenhasButton">Gerar Senhas</string>
 </resources>

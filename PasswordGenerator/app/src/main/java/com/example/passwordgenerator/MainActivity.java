@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements
         int letrasMaiusculas = Integer.parseInt(((EditText)findViewById(R.id.letraMaiuscula)).getText().toString());
         int letrasMinusculas = Integer.parseInt(((EditText)findViewById(R.id.letrasMinusculas)).getText().toString());
         int letrasEspeciais = Integer.parseInt(((EditText)findViewById(R.id.letrasEspeciais)).getText().toString());
-        ArrayList<String> result = passwordGeneratorService.returnListPasswords(letrasMaiusculas, letrasMinusculas, letrasEspeciais);
+        int numeros = Integer.parseInt(((EditText)findViewById(R.id.numeros)).getText().toString());
+        ArrayList<String> result = passwordGeneratorService.returnListPasswords(letrasMaiusculas, letrasMinusculas, letrasEspeciais, numeros);
 
         Intent intent = new Intent(this, result.class);
         intent.putExtra("FILES_TO_SEND", result);

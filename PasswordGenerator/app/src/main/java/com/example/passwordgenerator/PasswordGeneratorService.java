@@ -31,14 +31,14 @@ public class PasswordGeneratorService extends Service {
         }
     }
 
-    public ArrayList<String> returnListPasswords(int letrasMaiusculas, int letrasMinusculas, int caractaeresEspeciais){
+    public ArrayList<String> returnListPasswords(int letrasMaiusculas, int letrasMinusculas, int caractaeresEspeciais,  int numbers){
         ArrayList<String> passwords = new ArrayList<>();
         for (int i=0;i<10;i++){
-            passwords.add(generatePassword(letrasMaiusculas, letrasMinusculas, caractaeresEspeciais));
+            passwords.add(generatePassword(letrasMaiusculas, letrasMinusculas, caractaeresEspeciais, numbers));
         }
         return passwords;
     }
-    private String generatePassword(int letrasMaiusculas, int letrasMinusculas, int caractaeresEspeciais){
+    private String generatePassword(int letrasMaiusculas, int letrasMinusculas, int caractaeresEspeciais, int numbers){
         PasswordGenerator gen = new PasswordGenerator();
         CharacterData lowerCaseChars = EnglishCharacterData.LowerCase;
         CharacterRule lowerCaseRule = new CharacterRule(lowerCaseChars);
@@ -48,6 +48,9 @@ public class PasswordGeneratorService extends Service {
         CharacterRule upperCaseRule = new CharacterRule(upperCaseChars);
         upperCaseRule.setNumberOfCharacters(letrasMaiusculas);
 
+        CharacterData digitChars = EnglishCharacterData.Digit;
+        CharacterRule digitRule = new CharacterRule(digitChars);
+        digitRule.setNumberOfCharacters(numbers);
 
         CharacterData specialChars = new CharacterData() {
             public String getErrorCode() {
@@ -61,7 +64,7 @@ public class PasswordGeneratorService extends Service {
         CharacterRule splCharRule = new CharacterRule(specialChars);
         splCharRule.setNumberOfCharacters(caractaeresEspeciais);
 
-        return gen.generatePassword(letrasMaiusculas+letrasMinusculas+caractaeresEspeciais, splCharRule, lowerCaseRule,
-                upperCaseRule);
+        return gen.generatePassword(letrasMaiusculas+letrasMinusculas+caractaeresEspeciais+numbers, splCharRule, lowerCaseRule,
+                upperCaseRule, digitRule);
     }
 }
