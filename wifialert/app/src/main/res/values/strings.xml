@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">wifialert</string>
+    <string name="wifi">Nome da Rede</string>
+    <string name="saveWifi">Salvar</string>
+</resources>
